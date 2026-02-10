@@ -1,7 +1,3 @@
-/* ============================================
-   NAVIGATION STYLES
-   ============================================ */
-
 #menuItems {
     position: relative;
     display: flex;
@@ -10,7 +6,7 @@
     background-color: #f0f0f0;
 }
 
-/* Requirement 5: Navigation button hover - background color changes */
+
 #menuItems button {
     padding: 10px 15px;
     border: none;
@@ -23,7 +19,7 @@
     background-color: #c0c0c0;
 }
 
-/* Requirement 6: Jump menu hidden by default, appears on Recent Articles hover */
+
 #jumpMenu {
     display: none;
     position: absolute;
@@ -44,7 +40,7 @@
     display: block;
 }
 
-/* Requirement 7: Link hover in jump menu - font and background color change */
+
 #jumpMenu li a {
     display: block;
     padding: 8px 15px;
@@ -59,12 +55,7 @@
     background-color: #0066cc;
 }
 
-/* ============================================
-   ARTICLE STYLES
-   ============================================ */
 
-/* Requirement 1: First letter of article's main text - Times New Roman, 36px */
-/* Targets the first paragraph (main content), not the "Read More" paragraph */
 article > p:first-of-type::first-letter {
     font-family: "Times New Roman", Times, serif;
     font-size: 36px;
@@ -74,10 +65,10 @@ article > p:first-of-type::first-letter {
     padding-right: 5px;
 }
 
-/* Requirements 3 & 4: Article hover effect with 2-second transition */
+
 article {
-    color: #aaaaaa;                /* Light-colored text initially */
-    max-height: 180px;             /* Collapsed state */
+    color: #aaaaaa;               
+    max-height: 180px;             
     overflow: hidden;
     padding: 15px;
     margin-bottom: 20px;
@@ -88,16 +79,14 @@ article {
 }
 
 article:hover {
-    color: #000000;                /* Darker text on hover */
-    max-height: 1000px;            /* Expanded state */
+    color: #000000;               
+    max-height: 1000px;            
 }
 
-/* Article headings should remain visible */
 article h2 {
     color: #333;
 }
 
-/* Requirement 2: Arrow image after Google links */
 a[href*="google.com"] {
     display: inline-flex;
     align-items: center;
@@ -116,7 +105,7 @@ a[href*="google.com"]::after {
     vertical-align: middle;
 }
 
-/* Style for Read More links */
+
 article > p:last-of-type a {
     color: #0066cc;
     text-decoration: none;
@@ -126,9 +115,7 @@ article > p:last-of-type a:hover {
     text-decoration: underline;
 }
 
-/* ============================================
-   GENERAL PAGE STYLES
-   ============================================ */
+
 
 body {
     font-family: Arial, sans-serif;
