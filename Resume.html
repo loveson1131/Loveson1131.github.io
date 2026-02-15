@@ -2,62 +2,623 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loveson Cassamajor Resume</title>
+    <style>
+        /* ===== CSS Reset & Base Styles ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #1a1a2e;
+            --color-secondary: #16213e;
+            --color-accent: #0f3460;
+            --color-highlight: #e94560;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-bg: #f5f5f5;
+            --color-white: #ffffff;
+            --color-border: #e0e0e0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+            --radius: 8px;
+            --transition: 0.3s ease;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ===== Layout Container ===== */
+        .resume-wrapper {
+            max-width: 1920px;
+            margin: 0 auto;
+        }
+
+        /* ===== Header ===== */
+        .resume-header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: var(--color-white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .resume-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .resume-header .tagline {
+            font-size: 1.15rem;
+            font-style: italic;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        /* ===== Contact Bar ===== */
+        .contact-bar {
+            background-color: var(--color-secondary);
+            padding: 16px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 24px;
+        }
+
+        .contact-bar .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .contact-bar .contact-item a {
+            color: #90caf9;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-bar .contact-item a:hover {
+            color: var(--color-highlight);
+            text-decoration: underline;
+        }
+
+        .contact-bar .contact-item .icon {
+            font-size: 1rem;
+        }
+
+        /* ===== Main Content ===== */
+        .main-content {
+            display: grid;
+            gap: 0;
+        }
+
+        /* ===== Section Shared Styles ===== */
+        .section {
+            background-color: var(--color-white);
+            padding: 28px 20px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--color-highlight);
+            display: inline-block;
+        }
+
+        /* ===== Education Section ===== */
+        .education-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .education-card {
+            background-color: var(--color-bg);
+            border-left: 4px solid var(--color-accent);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow var(--transition), transform var(--transition);
+        }
+
+        .education-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .education-card h3 {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+
+        .education-card .institution {
+            font-size: 1rem;
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        .education-card .details {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-top: 4px;
+        }
+
+        /* ===== Skills Section ===== */
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skills-list li {
+            background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
+            color: var(--color-white);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .skills-list li:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ===== Work Experience Section ===== */
+        .experience-card {
+            background-color: var(--color-bg);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--color-highlight);
+            transition: box-shadow var(--transition);
+        }
+
+        .experience-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .experience-card .role {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .experience-card .company {
+            font-size: 1.05rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .experience-card .period {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            margin-top: 4px;
+            margin-bottom: 16px;
+        }
+
+        .experience-card .responsibilities {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .experience-card .responsibilities li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-text);
+        }
+
+        .experience-card .responsibilities li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--color-highlight);
+            font-weight: bold;
+        }
+
+        /* ===== References Section ===== */
+        .references-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .reference-card {
+            background-color: var(--color-bg);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            border-top: 3px solid var(--color-accent);
+            transition: box-shadow var(--transition), transform var(--transition);
+        }
+
+        .reference-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .reference-card h3 {
+            font-size: 1.05rem;
+            color: var(--color-primary);
+            margin-bottom: 4px;
+        }
+
+        .reference-card .ref-title {
+            font-size: 0.9rem;
+            color: var(--color-accent);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .reference-card .ref-contact {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        .reference-card .ref-contact a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .reference-card .ref-contact a:hover {
+            color: var(--color-highlight);
+            text-decoration: underline;
+        }
+
+        /* ===== Footer ===== */
+        .resume-footer {
+            background-color: var(--color-primary);
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* ==============================================
+           RESPONSIVE: MOBILE (max-width: 412px target)
+           ============================================== */
+        @media screen and (max-width: 480px) {
+            html {
+                font-size: 14px;
+            }
+
+            .resume-header {
+                padding: 28px 16px;
+            }
+
+            .resume-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .resume-header .tagline {
+                font-size: 1rem;
+            }
+
+            .contact-bar {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                padding: 14px 16px;
+            }
+
+            .contact-bar .contact-item {
+                font-size: 0.85rem;
+            }
+
+            .section {
+                padding: 22px 16px;
+            }
+
+            .section-title {
+                font-size: 1.15rem;
+                letter-spacing: 1px;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .education-card {
+                padding: 16px;
+            }
+
+            .skills-list {
+                gap: 8px;
+            }
+
+            .skills-list li {
+                padding: 6px 16px;
+                font-size: 0.85rem;
+            }
+
+            .experience-card {
+                padding: 18px;
+            }
+
+            .experience-card .role {
+                font-size: 1.05rem;
+            }
+
+            .experience-card .responsibilities li {
+                font-size: 0.9rem;
+            }
+
+            .references-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reference-card {
+                padding: 16px;
+            }
+        }
+
+        /* ==============================================
+           RESPONSIVE: TABLET (481px – 1024px)
+           ============================================== */
+        @media screen and (min-width: 481px) and (max-width: 1024px) {
+            .resume-wrapper {
+                max-width: 900px;
+                margin: 20px auto;
+            }
+
+            .resume-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .section {
+                padding: 28px 30px;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .references-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ==============================================
+           RESPONSIVE: DESKTOP / LAPTOP (1025px – 1920px)
+           ============================================== */
+        @media screen and (min-width: 1025px) {
+            .resume-wrapper {
+                max-width: 1100px;
+                margin: 40px auto;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: var(--shadow-lg);
+            }
+
+            .resume-header {
+                padding: 50px 40px;
+            }
+
+            .resume-header h1 {
+                font-size: 2.8rem;
+            }
+
+            .resume-header .tagline {
+                font-size: 1.25rem;
+            }
+
+            .contact-bar {
+                gap: 12px 32px;
+                padding: 18px 40px;
+            }
+
+            .section {
+                padding: 36px 48px;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .education-card h3 {
+                font-size: 1.15rem;
+            }
+
+            .skills-list li {
+                padding: 10px 24px;
+                font-size: 0.95rem;
+            }
+
+            .experience-card {
+                padding: 28px;
+            }
+
+            .experience-card .role {
+                font-size: 1.3rem;
+            }
+
+            .references-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        /* ===== Print Styles ===== */
+        @media print {
+            body {
+                background-color: #fff;
+            }
+
+            .resume-wrapper {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+            }
+
+            .resume-header {
+                background: var(--color-primary) !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .section {
+                break-inside: avoid;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Loveson Cassamajor</h1>
-    <p><em>Information Technology Student</em></p>
 
-    <h2>Contact</h2>
-    <p>Cassamajor3211@gmail.com</p>
-    <p>754 259-4861</p>
-    <p>Orlando, FL</p>
-    <p><a href="https://www.linkedin.com/in/loveson-cassamajor-797879108/">LinkedIn</a></p>
-    <p><a href="https://github.com/loveson1131">Github.com</a></p>
+    <div class="resume-wrapper">
 
-    <h2>Education</h2>
-    <h3>Bachelor of Science in Information Technology</h3>
-    <p>University of Central Florida</p>
-    <p>2024-2026</p>
-    <p>Orlando, Florida</p>
+        <!-- ===== HEADER ===== -->
+        <header class="resume-header">
+            <h1>Loveson Cassamajor</h1>
+            <p class="tagline">Information Technology Student</p>
+        </header>
 
-    <h3>Valencia College</h3>
-    <p>2022-2024</p>
-    <p>Orlando, Florida</p>
+        <!-- ===== CONTACT BAR ===== -->
+        <nav class="contact-bar">
+            <span class="contact-item">
+                <span class="icon">&#9993;</span>
+                <a href="mailto:Cassamajor3211@gmail.com">Cassamajor3211@gmail.com</a>
+            </span>
+            <span class="contact-item">
+                <span class="icon">&#9742;</span>
+                754 259-4861
+            </span>
+            <span class="contact-item">
+                <span class="icon">&#9906;</span>
+                Orlando, FL
+            </span>
+            <span class="contact-item">
+                <span class="icon">&#128279;</span>
+                <a href="https://www.linkedin.com/in/loveson-cassamajor-797879108/" target="_blank" rel="noopener">LinkedIn</a>
+            </span>
+            <span class="contact-item">
+                <span class="icon">&#128187;</span>
+                <a href="https://github.com/loveson1131" target="_blank" rel="noopener">GitHub</a>
+            </span>
+        </nav>
 
-    <h2>Skills</h2>
-    <ul>
-        <li>Python</li>
-        <li>C</li>
-        <li>JavaScript</li>
-    </ul>
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main-content">
 
-    <h2>Work Experience</h2>
-    <h3>Intern</h3>
-    <p>Presidio</p>
-    <p>Summer 2025 - Orlando, Florida / Remote</p>
-    <ul>
-        <li>Assisted in assembling AP's, Routers, Switches, console servers and Voice Gateways.</li>
-        <li>I updated firmware, configured NIC's, helped with OS updates.</li>
-        <li>My role involved assisting with imaging systems, applying software configurations, running diagnostics, and verifying that each device met the Staging and Integration Services standards.</li>
-    </ul>
+            <!-- Education -->
+            <section class="section">
+                <h2 class="section-title">Education</h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <h3>Bachelor of Science in Information Technology</h3>
+                        <p class="institution">University of Central Florida</p>
+                        <p class="details">2024 – 2026 &bull; Orlando, Florida</p>
+                    </div>
+                    <div class="education-card">
+                        <h3>Associate Degree</h3>
+                        <p class="institution">Valencia College</p>
+                        <p class="details">2022 – 2024 &bull; Orlando, Florida</p>
+                    </div>
+                </div>
+            </section>
 
-    <h2>Professional References</h2>
+            <!-- Skills -->
+            <section class="section">
+                <h2 class="section-title">Skills</h2>
+                <ul class="skills-list">
+                    <li>Python</li>
+                    <li>C</li>
+                    <li>JavaScript</li>
+                </ul>
+            </section>
 
-    <h3>Julie Roberts</h3>
-    <p>Engineering VP/Presidio</p>
-    <p>+1.813.579.4959</p>
-    <p><a href="mailto:jroberts@PRESIDIO.com">jroberts@PRESIDIO.com</a></p>
+            <!-- Work Experience -->
+            <section class="section">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="experience-card">
+                    <p class="role">Intern</p>
+                    <p class="company">Presidio</p>
+                    <p class="period">Summer 2025 &bull; Orlando, Florida / Remote</p>
+                    <ul class="responsibilities">
+                        <li>Assisted in assembling APs, Routers, Switches, console servers, and Voice Gateways.</li>
+                        <li>Updated firmware, configured NICs, and helped with OS updates.</li>
+                        <li>Assisted with imaging systems, applying software configurations, running diagnostics, and verifying that each device met the Staging and Integration Services standards.</li>
+                    </ul>
+                </div>
+            </section>
 
-    <h3>Will Schoenberger</h3>
-    <p>Director, Staging &amp; Integration Services/Presidio</p>
-    <p>+1.813.579.4486</p>
-    <p><a href="mailto:WSchoenberger@presidio.com">WSchoenberger@presidio.com</a></p>
+            <!-- Professional References -->
+            <section class="section">
+                <h2 class="section-title">Professional References</h2>
+                <div class="references-grid">
+                    <div class="reference-card">
+                        <h3>Julie Roberts</h3>
+                        <p class="ref-title">Engineering VP, Presidio</p>
+                        <p class="ref-contact">+1.813.579.4959</p>
+                        <p class="ref-contact"><a href="mailto:jroberts@PRESIDIO.com">jroberts@PRESIDIO.com</a></p>
+                    </div>
+                    <div class="reference-card">
+                        <h3>Will Schoenberger</h3>
+                        <p class="ref-title">Director, Staging &amp; Integration Services, Presidio</p>
+                        <p class="ref-contact">+1.813.579.4486</p>
+                        <p class="ref-contact"><a href="mailto:WSchoenberger@presidio.com">WSchoenberger@presidio.com</a></p>
+                    </div>
+                    <div class="reference-card">
+                        <h3>Stephen Parsons</h3>
+                        <p class="ref-title">Manager, Staging &amp; Integration</p>
+                        <p class="ref-contact">+1.407.409.8223</p>
+                        <p class="ref-contact"><a href="mailto:sparsons@presidio.com">sparsons@presidio.com</a></p>
+                    </div>
+                </div>
+            </section>
 
-    <h3>Stephen Parsons</h3>
-    <p>Manager, Staging &amp; Integration</p>
-    <p>+1.407.409.8223</p>
-    <p><a href="mailto:sparsons@presidio.com">sparsons@presidio.com</a></p>
+        </main>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="resume-footer">
+            &copy; 2025 Loveson Cassamajor. All rights reserved.
+        </footer>
+
+    </div>
 
 </body>
 </html>
