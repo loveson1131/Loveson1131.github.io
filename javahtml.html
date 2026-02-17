@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Assignment</title>
+</head>
+<body>
+
+  <h1>JavaScript Assignment</h1>
+  <h2>Current Counter: <span id="counter">0</span></h2>
+
+
+  <h3>1pt: Simple Functions</h3>
+  <p>When the 'increase' button is clicked, increment the counter above.<br>
+     When the 'decrease' button is clicked, decrement the counter above.</p>
+  <button onclick="increaseCounter()">Increase Counter</button>
+  <button onclick="decreaseCounter()">Decrease Counter</button>
+
+  <hr>
+
+
+  <h3>1pt: Simple For Loop</h3>
+  <p>When this button is clicked, display every number from 0 up to and including the counter above.</p>
+  <button onclick="runForLoop()">Run For Loop</button>
+  <p>Result: <span id="forLoopResult"></span></p>
+
+  <hr>
+
+  <h3>1pt: Repetition with Condition</h3>
+  <p>When this button is clicked, display all odd numbers from 1 to the counter above.</p>
+  <button onclick="showOddNumbers()">Show Odd Numbers</button>
+  <p>Result: <span id="oddNumbersResult"></span></p>
+
+  <hr>
+
+  <h3>1pt: Arrays</h3>
+  <p>When this button is clicked, add every multiple of 5 up to the counter in reverse order to an array. Then print the array to console.</p>
+  <button onclick="reverseMultiplesOf5()">Array of Reverse Order Multiples of 5</button>
+
+  <hr>
+
+  <h3>2pts: Objects and Form Fields</h3>
+  <label>Car Type <input type="text" id="carType"></label><br>
+  <label>Car MPG <input type="text" id="carMPG"></label><br>
+  <label>Car Color <input type="text" id="carColor"></label><br>
+  <button onclick="printCarObject()">Print Car Object</button>
+
+  <hr>
+
+  <h3>2pts: Objects and Form Fields pt. 2</h3>
+  <p>Load car data into the form above.</p>
+  <button onclick="loadCar(1)">Load Car 1</button>
+  <button onclick="loadCar(2)">Load Car 2</button>
+  <button onclick="loadCar(3)">Load Car 3</button>
+
+  <hr>
+
+ 
+  <h3>2pt: Changing Styles</h3>
+  <p id="colorParagraph">When either of these buttons are clicked,
+    the text color of this paragraph (and only this paragraph) should change
+    to the color described by the button text.</p>
+  <button onclick="changeColor('red')">Red</button>
+  <button onclick="changeColor('green')">Green</button>
+  <button onclick="changeColor('blue')">Blue</button>
+
+  <script src="javascript1.js"></script>
+</body>
+</html>
